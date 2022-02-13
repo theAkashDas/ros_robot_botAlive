@@ -2,7 +2,7 @@
 <robot name = "botAlive" xmlns:xacro ="http://ros.org/wiki/xacro"> 
 
 
-    <link name="chassis">
+    <link name="link_chassis">
         <pose>0 0 0.1 0 0 0</pose>
         <inertial>
 			<origin xyz = "0 0 0.1" rpy = "0 0 0" />
@@ -22,4 +22,29 @@
             </geometry>
         </visual>   
     </link>
+    <joint name = "joint1" type="continuous">
+        <origin xyz = "0.6 0 0.5" rpy="0 0 0"/>
+        <parent link="link_chassis"/>
+        <child link="link_arm"/>
+    </joint> 
+    <link name="link_arm">
+        <pose>0 0 0.1 0 0 0</pose>
+        <inertial>
+			<origin xyz = "0 0 0" rpy = "0 0 0" />
+			<mass value = "1"/>
+			<inertia ixx ="0.16349704499" iyy=".17338235336" izz=".32740605580" ixy="-0.00862477504" ixz ="-0.00421725489" iyz = "0.00469308990"/>
+		</inertial>
+
+        <collision name = "collisiion_chassis">
+            <geometry>
+                <box size = "0.2 0.2 1"/>
+            </geometry>
+        </collision>   
+        <visual>
+            <origin xyz = "0 0 0" rpy = "0 0 0" />
+            <geometry>
+                <box size = "0.2 0.2 1"/>
+            </geometry>
+        </visual>   
+    </link>   
 </robot>    
