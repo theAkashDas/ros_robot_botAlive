@@ -1,0 +1,25 @@
+<?xml version = "1.0" ?>
+<robot name = "botAlive" xmlns:xacro ="http://ros.org/wiki/xacro"> 
+
+
+    <link name="chassis">
+        <pose>0 0 0.1 0 0 0</pose>
+        <inertial>
+			<origin xyz = "0 0 0.1" rpy = "0 0 0" />
+			<mass value = "3.07549"/>
+			<inertia ixx ="0.16349704499" iyy=".17338235336" izz=".32740605580" ixy="-0.00862477504" ixz ="-0.00421725489" iyz = "0.00469308990"/>
+		</inertial>
+
+        <collision name = "collisiion_chassis">
+            <geometry>
+                <box size = "2 2 1"/>
+            </geometry>
+        </collision>   
+        <visual>
+            <origin xyz = "0 0 0" rpy = "0 0 0" />
+            <geometry>
+                <box size = "2 2 1"/>
+            </geometry>
+        </visual>   
+    </link>
+</robot>    
