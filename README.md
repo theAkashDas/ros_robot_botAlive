@@ -1,5 +1,19 @@
 # ros_robot_botAlive
-The repository will contain ROS programming and building of a robot from scratch
+The repository will contain ROS programming and building of a robot from scratch.
+#### For using this Repo :
+```
+cd catkin_ws/src
+git clone https://github.com/theAkashDas/ros_robot_botAlive.git
+catkin_make or catkin build
+
+```
+
+#### You can go to certain commits by : 
+``` 
+git log
+git checkout <commit_hash>
+
+```
 
 
 ### 1.0.0
