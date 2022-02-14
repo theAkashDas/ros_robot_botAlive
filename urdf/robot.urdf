@@ -1,33 +1,90 @@
 <?xml version = "1.0" ?>
 <robot name = "botAlive" xmlns:xacro ="http://ros.org/wiki/xacro"> 
-
-
-    <link name="link_chassis">
+    <link name="base_link">
         <pose>0 0 0.1 0 0 0</pose>
         <inertial>
-			<origin xyz = "0 0 0.1" rpy = "0 0 0" />
+			<origin xyz = "0 0 0.085" rpy = "0 0 0" />
 			<mass value = "3.07549"/>
 			<inertia ixx ="0.16349704499" iyy=".17338235336" izz=".32740605580" ixy="-0.00862477504" ixz ="-0.00421725489" iyz = "0.00469308990"/>
 		</inertial>
 
         <collision name = "collisiion_chassis">
             <geometry>
-                <box size = "2 2 1"/>
+                <box size = "0.18 0.12 0.06"/>
             </geometry>
         </collision>   
         <visual>
             <origin xyz = "0 0 0" rpy = "0 0 0" />
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
             <geometry>
-                <box size = "2 2 1"/>
+                <box size = "0.18 0.12 0.06"/>
             </geometry>
         </visual>   
     </link>
-    <joint name = "joint1" type="continuous">
+    <joint name="base_to_lwheel" type="fixed">
+       <parent link="base_link"/>
+       <child link="lwheel"/>
+       <origin xyz="0 0.075 0.046" rpy="1.5708 0 0"/>
+     </joint>
+    <link name="lwheel">
+       <visual>
+         <geometry>
+          <cylinder length="0.012" radius="0.06"/>
+         </geometry>
+         <origin rpy="0 0 0" xyz="0 0 0"/>
+         <material name="black">
+           <color rgba="0 0 0 1"/>
+         </material>
+       </visual>
+     </link>
+     <joint name="base_to_rwheel" type="fixed">
+       <parent link="base_link"/>
+       <child link="rwheel"/>
+       <origin xyz="0 -0.075 0.046" rpy="-1.5708 0 0"/>
+     </joint>
+    <link name="rwheel">
+       <visual>
+         <geometry>
+          <cylinder length="0.012" radius="0.06"/>
+         </geometry>
+         <origin rpy="0 0 0" xyz="0 0 0"/>
+         <material name="black">
+           <color rgba="0 0 0 1"/>
+         </material>
+       </visual>
+     </link>
+     <joint name="base_to_scanner" type="fixed">
+       <parent link="base_link"/>
+       <child link="scanner"/>
+       <origin xyz="0.105 0 0.06" rpy="0 0 0"/>
+     </joint>
+    <link name="scanner">
+       <visual>
+         <geometry>
+          <box size="0.015 0.045 0.025"/>
+         </geometry>
+         <origin rpy="0 0 0" xyz="0 0 0"/>
+         <material name="black">
+           <color rgba="0 0 0 1"/>
+         </material>
+       </visual>
+     </link>
+
+
+
+
+
+
+
+
+    <!-- <joint name = "joint1" type="continuous">
         <origin xyz = "0.6 0 0.5" rpy="0 0 0"/>
-        <parent link="link_chassis"/>
+        <parent link="base_link"/>
         <child link="link_arm"/>
-    </joint> 
-    <link name="link_arm">
+    </joint>  -->
+    <!-- <link name="link_arm">
         <pose>0 0 0.1 0 0 0</pose>
         <inertial>
 			<origin xyz = "0 0 0" rpy = "0 0 0" />
@@ -43,8 +100,8 @@
         <visual>
             <origin xyz = "0 0 0" rpy = "0 0 0" />
             <geometry>
-                <box size = "0.2 0.2 1"/>
+                <box size = "0.1 0.1 1"/>
             </geometry>
         </visual>   
-    </link>   
+    </link>    -->
 </robot>    
